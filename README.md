@@ -24,4 +24,4 @@ Proiectul conține un **singur scenariu automatizat complet**, care acoperă urm
 3. Adăugarea unuia sau mai multor produse în coș
 4. Ștergerea unui produs din coș
 5. Finalizarea comenzii (checkout)
-6. Verif
+
