@@ -9,9 +9,10 @@ public class ConfigReader {
 
     static {
         try {
-            FileInputStream fis = new FileInputStream("src/test/resources/config.properties");
+            FileInputStream file = new FileInputStream("src/test/resources/config.properties");
             properties = new Properties();
-            properties.load(fis);
+            properties.load(file);
+            file.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
