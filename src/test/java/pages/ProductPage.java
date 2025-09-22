@@ -6,27 +6,39 @@ import org.openqa.selenium.WebDriver;
 public class ProductPage {
     private WebDriver driver;
 
+    // Butoane Add to cart
+    private By backpackButton = By.id("add-to-cart-sauce-labs-backpack");
+    private By bikeLightButton = By.id("add-to-cart-sauce-labs-bike-light");
+    private By boltTShirtButton = By.id("add-to-cart-sauce-labs-bolt-t-shirt");
+    private By fleeceJacketButton = By.id("add-to-cart-sauce-labs-fleece-jacket");
+
+    // Filtru
+    private By filterDropdown = By.className("product_sort_container");
+
     public ProductPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    // Exemplu de metode pentru produse individuale
-    public void addBackpack() {
-        String xpath = "//div[@class='inventory_item']//div[text()='Sauce Labs Backpack']/ancestor::div[@class='inventory_item']//button";
-        driver.findElement(By.xpath(xpath)).click();
-    }
-
-    public void addBikeLight() {
-        String xpath = "//div[@class='inventory_item']//div[text()='Sauce Labs Bike Light']/ancestor::div[@class='inventory_item']//button";
-        driver.findElement(By.xpath(xpath)).click();
-    }
-
+    // Aplicare filtru dupa pret
     public void applyFilter(String filterOption) {
-        driver.findElement(By.className("product_sort_container")).click();
+        driver.findElement(filterDropdown).click();
         driver.findElement(By.xpath("//option[text()='" + filterOption + "']")).click();
     }
 
-    public void goToCart() {
-        driver.findElement(By.className("shopping_cart_link")).click();
+    // Adaugare produse
+    public void addBackpack() {
+        driver.findElement(backpackButton).click();
+    }
+
+    public void addBikeLight() {
+        driver.findElement(bikeLightButton).click();
+    }
+
+    public void addBoltTShirt() {
+        driver.findElement(boltTShirtButton).click();
+    }
+
+    public void addFleeceJacket() {
+        driver.findElement(fleeceJacketButton).click();
     }
 }
