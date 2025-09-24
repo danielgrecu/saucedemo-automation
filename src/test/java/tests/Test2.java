@@ -10,13 +10,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class Test2 {
 
     /*
-     * Scenariu 2:
-     * 1. Autentificare cu date valide
-     * 2. Aplicare filtru pret "Low to High"
-     * 3. Adaugare primele 3 produse in cos (din pagina produsului)
-     * 4. Accesare cos de cumparaturi si scoatere al 3-lea produs (Bolt T-Shirt)
-     * 5. Aplicare filtru pret "Low to High" si adaugarea celui de-al 4-lea produs
-     * 6. Finalizare comanda (Checkout)
+     * Scenariu 2 – Gestionarea cosului cu eliminarea unui produs si finalizarea comenzii
+     *
+     * Pasi automatizati:
+     * 1. Acceseaza site-ul SauceDemo
+     * 2. Autentificare cu date valide (username: standard_user, parola: secret_sauce)
+     * 3. Aplica filtrul de pret "Low to High"
+     * 4. Adauga primele 3 produse in cos: Backpack, Bike Light, Bolt T-Shirt
+     * 5. Acceseaza cosul de cumparaturi si elimina al 3-lea produs (Bolt T-Shirt)
+     * 6. Revine la pagina de produse
+     * 7. Aplica din nou filtrul de pret "Low to High" si adauga Fleece Jacket
+     * 8. Finalizeaza comanda (Checkout) completand informatiile: Daniel Grecu, cod postal 240150
+     * 9. Verifica mesajul final de confirmare: "Thank you for your order!"
      */
 
     @Test

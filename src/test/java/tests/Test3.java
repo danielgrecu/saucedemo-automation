@@ -10,10 +10,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class Test3 {
 
     /*
-     * Scenariu 3:
-     * 1. Logare cu date incorecte (parola cu ultima literă dublată)
-     * 2. Verificare mesaj de eroare
-     * Browserul ramane deschis pentru inspectie
+     * Scenariu 3 – Logare cu parola incorecta si verificare eroare
+     *
+     * Pasi automatizati:
+     * 1. Acceseaza site-ul SauceDemo
+     * 2. Logare cu username corect si parola gresita (ultima litera dublata)
+     * 3. Verifica ca mesajul de eroare este afisat
+     * 4. Browserul ramane deschis pentru inspectie
      */
 
     @Test

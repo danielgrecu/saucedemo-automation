@@ -9,13 +9,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class Test1 {
 
     /*
-     * Scenariu 1:
-     * 1. Logare cu date valide
-     * 2. Aplicare filtru produse "Name (A to Z)"
-     * 3. Adaugare 2 produse in cos: "Backpack" si "Bike Light"
-     * 4. Accesare cos de cumparaturi
-     * 5. Finalizare comanda (checkout)
-     * 6. Verificare mesaj final "THANK YOU FOR YOUR ORDER"
+     * Scenariu 1 – Achizitie completa cu 2 produse
+     *
+     * Pasi automatizati:
+     * 1. Acceseaza site-ul SauceDemo
+     * 2. Logare cu date valide (username: standard_user, parola: secret_sauce)
+     * 3. Aplica filtrul produse "Name (A to Z)"
+     * 4. Adauga 2 produse in cos: Backpack si Bike Light
+     * 5. Acceseaza cosul de cumparaturi
+     * 6. Finalizeaza comanda (Checkout) completand informatiile: Daniel Grecu, cod postal 240150
+     * 7. Verifica mesajul final de confirmare: "Thank you for your order!"
      */
 
     @Test
