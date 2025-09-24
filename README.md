@@ -2,7 +2,7 @@
 
 Acest proiect conține un scenariu de testare automată pentru site-ul demo [saucedemo.com](https://www.saucedemo.com), realizat cu Java și Selenium WebDriver.
 
-🔧 Tehnologii folosite
+🔧 Tehnologii folosite 
 
 - Java 17+
 - Maven
