@@ -81,7 +81,7 @@ public class Test2 {
 // Verificare mesaj final
 
             String msg = co.getConfirmationMessage();
-            assertEquals("THANK YOU FOR YOUR ORDER", msg);
+            assertEquals("Thank you for your order!", msg);
 
         } catch (InterruptedException e) {
             e.printStackTrace();
