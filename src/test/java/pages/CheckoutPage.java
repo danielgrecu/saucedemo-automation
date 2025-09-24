@@ -18,7 +18,7 @@ public class CheckoutPage {
     private By finishButton = By.id("finish");
 
     // Mesaj de confirmare comanda
-    private By confirmationMessage = By.className("complete-header");
+    private By confirmationMessage = By.cssSelector(".complete-header");
 
     public CheckoutPage(WebDriver driver) {
         this.driver = driver;

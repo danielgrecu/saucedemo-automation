@@ -25,12 +25,12 @@ public class Test3 {
 
         // Logare cu username corect si parola cu ultima litera dublata
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("standard_user", "secret_saucee"); // parola gresita intentionat
+        loginPage.login("standard_user", "secret_saucee");
 
         // Verificare ca mesajul de eroare este afisat
         String errorMessage = loginPage.getErrorMessage();
         assertTrue(errorMessage.contains("Epic sadface"), "Eroarea de logare nu este afisata!");
 
-        // Browserul ramane deschis intentionat
+        // Browserul ramane deschis
     }
 }

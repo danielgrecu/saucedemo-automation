@@ -6,10 +6,10 @@ import org.openqa.selenium.WebDriver;
 public class ShoppingCartPage {
     private WebDriver driver;
 
-    // Butonul de cos
-    private By cartButton = By.className("shopping_cart_link");
+    // Butonul cosului
+    private By cartButton = By.id("shopping_cart_container");
 
-    // Buton remove Bolt T-Shirt
+    // Buton remove pentru Bolt T-Shirt
     private By removeBoltTShirtButton = By.id("remove-sauce-labs-bolt-t-shirt");
 
     // Buton Checkout
@@ -18,11 +18,11 @@ public class ShoppingCartPage {
     // Buton Continue Shopping
     private By continueShoppingButton = By.id("continue-shopping");
 
-    // Produse in cos
-    private By backpackItem = By.xpath("//div[@class='inventory_item_name' and text()='Sauce Labs Backpack']");
-    private By bikeLightItem = By.xpath("//div[@class='inventory_item_name' and text()='Sauce Labs Bike Light']");
-    private By boltTShirtItem = By.xpath("//div[@class='inventory_item_name' and text()='Sauce Labs Bolt T-Shirt']");
-    private By fleeceJacketItem = By.xpath("//div[@class='inventory_item_name' and text()='Sauce Labs Fleece Jacket']");
+    // Produse în cos (XPath robust cu contains)
+    private By backpackItem = By.xpath("//div[@class='inventory_item_name' and contains(text(),'Backpack')]");
+    private By bikeLightItem = By.xpath("//div[@class='inventory_item_name' and contains(text(),'Bike Light')]");
+    private By boltTShirtItem = By.xpath("//div[@class='inventory_item_name' and contains(text(),'Bolt T-Shirt')]");
+    private By fleeceJacketItem = By.xpath("//div[@class='inventory_item_name' and contains(text(),'Fleece Jacket')]");
 
     public ShoppingCartPage(WebDriver driver) {
         this.driver = driver;
@@ -33,7 +33,7 @@ public class ShoppingCartPage {
         driver.findElement(cartButton).click();
     }
 
-    // Sterge Bolt T-Shirt din cos
+    // Șterge Bolt T-Shirt din cos
     public void removeBoltTShirt() {
         driver.findElement(removeBoltTShirtButton).click();
     }
@@ -48,7 +48,7 @@ public class ShoppingCartPage {
         driver.findElement(continueShoppingButton).click();
     }
 
-    // Verificare daca un produs este in cos
+    // Verificare dacă un produs este în cos
     public boolean isProductInCart(String productName) {
         switch (productName) {
             case "Backpack": return driver.findElements(backpackItem).size() > 0;

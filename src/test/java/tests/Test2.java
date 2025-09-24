@@ -41,7 +41,7 @@ public class Test2 {
             productPage.addBikeLight();
             productPage.addBoltTShirt();
 
-            // Pauza scurta
+            // Pauza scurta pentru sincronizare Selenium-Browser
             Thread.sleep(500);
 
             // Mergi la cosul de cumparaturi

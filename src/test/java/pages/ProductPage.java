@@ -13,7 +13,7 @@ public class ProductPage {
     private By fleeceJacketButton = By.id("add-to-cart-sauce-labs-fleece-jacket");
 
     // Filtru
-    private By filterDropdown = By.className("product_sort_container");
+    private By filterDropdown = By.cssSelector(".product_sort_container");
 
     public ProductPage(WebDriver driver) {
         this.driver = driver;
