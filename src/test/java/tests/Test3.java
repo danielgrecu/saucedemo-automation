@@ -18,19 +18,24 @@ public class Test3 {
 
     @Test
     public void loginWithWrongPassword() {
-        WebDriver driver = DriverFactory.getDriver();
+        WebDriver drv = DriverFactory.getDriver();
 
-        // Acceseaza site-ul SauceDemo
-        driver.get("https://www.saucedemo.com/");
+// Acceseaza site-ul SauceDemo
 
-        // Logare cu username corect si parola cu ultima litera dublata
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("standard_user", "secret_saucee");
+     drv.get("https://www.saucedemo.com/");
 
-        // Verificare ca mesajul de eroare este afisat
-        String errorMessage = loginPage.getErrorMessage();
-        assertTrue(errorMessage.contains("Epic sadface"), "Eroarea de logare nu este afisata!");
+// Logare cu username corect si parola cu ultima litera dublata
 
-        // Browserul ramane deschis
+     LoginPage login = new LoginPage(drv);
+     login.login("standard_user","secret_saucee");
+
+// Verificare ca mesajul de eroare este afisat
+
+     String errMsg = login.getErrorMessage();
+     assertTrue(errMsg.contains("Epic sadface"), "Eroarea de logare nu este afisata!");
+
+// Browserul ramane deschis
+
     }
+
 }

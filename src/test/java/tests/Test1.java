@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import pages.*;
 import utils.DriverFactory;
 import org.openqa.selenium.WebDriver;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Test1 {
@@ -21,47 +20,46 @@ public class Test1 {
 
     @Test
     public void completePurchaseScenario() {
-        WebDriver driver = DriverFactory.getDriver();
-        try {
-            // Acceseaza site-ul SauceDemo
-            driver.get("https://www.saucedemo.com/");
+        WebDriver drv=DriverFactory.getDriver();
+        try{
 
-            // Logare cu username si password
-            LoginPage loginPage = new LoginPage(driver);
-            loginPage.login("standard_user", "secret_sauce");
+// Acceseaza site-ul SauceDemo
 
-            // Pagina de produse
-            ProductPage productPage = new ProductPage(driver);
+            drv.get("https://www.saucedemo.com/");
 
-            // Aplicare filtru produse
-            productPage.applyFilter("Name (A to Z)");
+// Logare cu username si password
 
-            // Adaugare produse in cos
-            productPage.addBackpack();
-            productPage.addBikeLight();
+            LoginPage login = new LoginPage(drv);
+            login.login("standard_user","secret_sauce");
 
-            // Mergi la cosul de cumparaturi
-            ShoppingCartPage cartPage = new ShoppingCartPage(driver);
-            cartPage.openCart();
+// Pagina de produse
 
-            // Incepere checkout
-            cartPage.checkout();
+            ProductPage prod = new ProductPage(drv);
+            prod.applyFilter("Name (A to Z)");
 
-            // Pagina checkout
-            CheckoutPage checkoutPage = new CheckoutPage(driver);
+// Adaugare produse in cos
 
-            // Introducere date pentru finalizare comanda
-            checkoutPage.enterCheckoutInfo("Daniel", "Grecu", "240150");
+            prod.addBackpack();
+            prod.addBikeLight();
 
-            // Finalizare comanda
-            checkoutPage.finishCheckout();
+// Mergi la cosul de cumparaturi
 
-            // Verificare mesaj final
-            String confirmation = checkoutPage.getConfirmationMessage();
-            assertEquals("THANK YOU FOR YOUR ORDER", confirmation);
+            ShoppingCartPage cart = new ShoppingCartPage(drv);
+            cart.openCart();
+            cart.checkout();
+
+// Pagina checkout
+
+            CheckoutPage co = new CheckoutPage(drv);
+            co.enterCheckoutInfo("Daniel","Grecu","240150");
+            co.finishCheckout();
+
+// Verificare mesaj final
+
+            String msg=co.getConfirmationMessage();
+            assertEquals("THANK YOU FOR YOUR ORDER", msg);
 
         } finally {
-            // Inchide browserul intotdeauna
             DriverFactory.quitDriver();
         }
     }

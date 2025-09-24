@@ -21,60 +21,75 @@ public class Test2 {
 
     @Test
     public void purchaseScenarioWithRemoval() {
-        WebDriver driver = DriverFactory.getDriver();
-        try {
-            // Acceseaza site-ul SauceDemo
-            driver.get("https://www.saucedemo.com/");
+        WebDriver drv=DriverFactory.getDriver();
+        try{
 
-            // Logare
-            LoginPage loginPage = new LoginPage(driver);
-            loginPage.login("standard_user", "secret_sauce");
 
-            // Pagina de produse
-            ProductPage productPage = new ProductPage(driver);
+// Acceseaza site-ul SauceDemo
 
-            // Aplicare filtru pret "Low to High"
-            productPage.applyFilter("Price (low to high)");
+            drv.get("https://www.saucedemo.com/");
 
-            // Adaugare primele 3 produse in cos
-            productPage.addBackpack();
-            productPage.addBikeLight();
-            productPage.addBoltTShirt();
+// Logare
+            LoginPage login = new LoginPage(drv);
+            login.login("standard_user","secret_sauce");
 
-            // Pauza scurta pentru sincronizare Selenium-Browser
+// Pagina de produse
+
+            ProductPage prod = new ProductPage(drv);
+
+// Aplicare filtru pret "Low to High"
+
+            prod.applyFilter("Price (low to high)");
+
+// Adaugare primele 3 produse in cos
+
+            prod.addBackpack();
+            prod.addBikeLight();
+            prod.addBoltTShirt();
+
+// Pauza scurta pentru sincronizare Selenium-Browser
+
             Thread.sleep(500);
 
-            // Mergi la cosul de cumparaturi
-            ShoppingCartPage cartPage = new ShoppingCartPage(driver);
-            cartPage.openCart();
+// Mergi la cosul de cumparaturi
+
+            ShoppingCartPage cart = new ShoppingCartPage(drv);
+            cart.openCart();
             Thread.sleep(500);
 
-            // Scoate Bolt T-Shirt
-            cartPage.removeBoltTShirt();
+// Scoate Bolt T-Shirt
+
+            cart.removeBoltTShirt();
             Thread.sleep(500);
 
-            // Revenire la pagina produselor
-            cartPage.continueShopping();
+// Revenire la pagina produselor
 
-            // Aplicare filtru si adaugare Fleece Jacket
-            productPage.applyFilter("Price (low to high)");
-            productPage.addFleeceJacket();
+            cart.continueShopping();
 
-            // Checkout
-            cartPage.checkout();
-            CheckoutPage checkoutPage = new CheckoutPage(driver);
-            checkoutPage.enterCheckoutInfo("Daniel", "Grecu", "240150");
-            checkoutPage.finishCheckout();
+// Aplicare filtru si adaugare Fleece Jacket
 
-            // Verificare mesaj final
-            String confirmation = checkoutPage.getConfirmationMessage();
-            assertEquals("THANK YOU FOR YOUR ORDER", confirmation);
+            prod.applyFilter("Price (low to high)");
+            prod.addFleeceJacket();
+
+// Checkout
+
+            cart.checkout();
+            CheckoutPage co = new CheckoutPage(drv);
+            co.enterCheckoutInfo("Daniel","Grecu","240150");
+            co.finishCheckout();
+
+// Verificare mesaj final
+
+            String msg = co.getConfirmationMessage();
+            assertEquals("THANK YOU FOR YOUR ORDER", msg);
 
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-            // Inchide browserul intotdeauna
+
+// Inchide browserul intotdeauna
+
             DriverFactory.quitDriver();
-        }
-    }
+
+ }}
 }
